@@ -1,31 +1,34 @@
 from email import message
 from html.entities import html5
+from turtle import title
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from .models import Proyecto, Tareas
 from django.shortcuts import get_object_or_404
 # Create your views here.
 
-def hello(request, username):     
-    return HttpResponse(f"Hola {username}")
+def hello(request):    
+    tittle = "Hola! Bienvenido a mi web con Django" 
+    return render(request, 'index.html', {
+        "tittle": tittle
+    })
     
                
 
 def about(request):
-    return HttpResponse("About")   
+    return render(request,"about.html")   
 
 
 def store(request):
-    return HttpResponse("Esto es el store")
+    return render (request, "store.html")
 
 def projects(request):
-    proyecto = list(Proyecto.objects.values())
-    return JsonResponse(proyecto, safe=False)
+    #proyecto = list(Proyecto.objects.values())
+    return render(request, "project.html")
 
-def tasks(request, id):
-    #tareas = Tareas.objects.get(id=id)
-    tareas =get_object_or_404(Tareas, id = id)
-    return HttpResponse(f"Tarea: {tareas.titulo}")
+def tasks(request):
+    #tareas = get_object_or_404(Tareas, id = id)
+    return render(request, "tasks.html")
 
 
 
