@@ -2,10 +2,9 @@ from email import message
 from html.entities import html5
 from turtle import title
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .models import Proyecto, Tareas
 from django.shortcuts import get_object_or_404
-from .forms import CrearNuevaTareas
+from .forms import CrearNuevaTareas, CrearNuevoProyecto
 # Create your views here.
 
 def hello(request):    
@@ -43,8 +42,17 @@ def creat_task(request):
         "form" : CrearNuevaTareas()
     })        
     else:
-        Tareas.objects.create(titulo=request.POST["titulo"], descipcion = request.method.POST["descripcion"], Proyecto_id = 2)
-        return redirect("tasks/")
+        Tareas.objects.create(titulo=request.POST["titulo"], descripcion = request.POST["descripcion"], proyecto_id = 7)
+        return redirect("tasks")
+
+def creat_project(request):
+    if request.method == "GET":
+        return render(request,"create_project.html",{
+            "form" : CrearNuevoProyecto()
+        })        
+    else:
+        Proyecto.objects.create(nombre = request.POST["nombre"])   
+        return redirect("project")     
 
 
 

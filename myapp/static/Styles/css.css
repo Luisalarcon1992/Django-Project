@@ -1,0 +1,29 @@
+body {
+    background-color: blanchedalmond;
+    color: brown;
+}
+
+.navbar {
+    background-color: white;
+    padding: 20px 10px;
+    text-decoration: none;
+}
+
+.navbar ul li a{
+    color: red;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navbar ul li{
+    list-style: none;
+}
+
+.conteiner {
+    max-width: 200px;
+    margin: auto;
+}

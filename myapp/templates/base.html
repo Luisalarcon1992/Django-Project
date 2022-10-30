@@ -1,15 +1,33 @@
-<nav>
-    <ul>
-        <li>
-            <a href="/"> Inicio </a>
-            <a href="/project"> Proyectos</a>
-            <a href="/tasks"> Tareas</a>
-            <a href="/store"> Tienda</a>
-            <a href="/about"> Acerca</a>
-            <a href="/create_tasks"> Crear tareas</a>
-        </li>
-    </ul>
-</nav>
+{% load static %}
 
-{% block content %}
-{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django</title>
+    <link rel="stylesheet" href="{% static 'styles/css.css' %}" type="text/css">
+</head>
+<body>
+    <nav class="navbar" >
+        <ul>
+            <li>
+                <a href="{% url 'index' %}"> Inicio </a>
+                <a href="{% url 'project' %}"> Proyectos</a>
+                <a href="{% url 'tasks' %}"> Tareas</a>
+                <a href="{% url 'store'%}"> Tienda</a>
+                <a href="{% url 'about' %}"> Acerca</a>
+                <a href="{% url 'create_tasks' %}"> Crear Tareas</a>
+                <a href="{% url 'create_project' %}"> Crear Proyecto</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
